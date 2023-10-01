@@ -29,13 +29,13 @@ const ScaffoldList = () => {
                 if (!tempIdList[scaffold.scaffold_id]) {
                   tempIdList[scaffold.scaffold_id] = {}
                   tempIdList[scaffold.scaffold_id][scaffold.sframe] = []
-                  tempIdList[scaffold.scaffold_id][scaffold.sframe].push({qstart: scaffold.qstart, qend: scaffold.qend})
+                  tempIdList[scaffold.scaffold_id][scaffold.sframe].push({qstart: scaffold.qstart, qend: scaffold.qend, qframe: scaffold.qframe})
                   } else {
                     if (tempIdList[scaffold.scaffold_id][scaffold.sframe]) {
-                        tempIdList[scaffold.scaffold_id][scaffold.sframe].push({qstart: scaffold.qstart, qend: scaffold.qend})
+                        tempIdList[scaffold.scaffold_id][scaffold.sframe].push({qstart: scaffold.qstart, qend: scaffold.qend, qframe: scaffold.qframe})
                     } else {
                         tempIdList[scaffold.scaffold_id][scaffold.sframe] = []
-                        tempIdList[scaffold.scaffold_id][scaffold.sframe].push({qstart: scaffold.qstart, qend: scaffold.qend})
+                        tempIdList[scaffold.scaffold_id][scaffold.sframe].push({qstart: scaffold.qstart, qend: scaffold.qend, qframe: scaffold.qframe})
                     }
                   }
             })
@@ -51,7 +51,7 @@ const ScaffoldList = () => {
                                 item.qend = parseInt(item.qend);
                             })
                             let tempResults = 0
-                            if (parseInt(frame) < 0) {
+                            if (parseInt(tempIdList[key][frame][0].qframe) > 0) {
                                
                                 let tempFrames = cloneDeep(tempIdList[key][frame])
                                 
@@ -69,6 +69,7 @@ const ScaffoldList = () => {
                                             tempFrames[tempNumber].qstart = item.qend +1
                                         }
                                     }
+                                    
                                     let tempValue = item.qend - item.qstart;
                                     tempResults +=  tempValue
                                 })
