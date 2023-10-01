@@ -58,7 +58,6 @@ const ScaffoldList = () => {
                                 tempFrames.sort((a, b) => {
                                     return a.qstart - b.qstart;
                                 });
-                                console.log(tempFrames)
                                 tempFrames.forEach((item, index) => {
             
                                     if (parseInt(frame) === -2 && newScaffold === 'scaffold14') {
