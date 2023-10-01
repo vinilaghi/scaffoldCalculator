@@ -85,7 +85,7 @@ const ScaffoldList = () => {
                             tempResults =+ (item.qend - item.qstart)
                         })
                     }
-                    tempList.push('Em ' + qseqid + 'o frame ' + frame + ' do ' + newScaffold + ' tem uma cobertura de ' + (tempResults / qlen)*100)
+                    tempList.push('Em ' + qseqid + ' o frame ' + frame + ' do ' + newScaffold + ' tem uma cobertura de ' + (tempResults / qlen)*100)
 
                 })
 
