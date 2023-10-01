@@ -60,14 +60,13 @@ const ScaffoldList = () => {
                                     tempFrames[tempNumber].qstart = item.qend +1
                                 }
                             }
-                            tempResults =+ (item.qend - item.qstart)
+                            tempResults =+ (item.qstart - item.qend)
                         })
                     } else {
                         let tempFrames = cloneDeep(tempIdList[key][frame])
                         tempFrames.sort((a, b) => {
                             return a.qend - b.qend;
                         });
-                        console.log(tempFrames);
 
                         tempFrames.forEach((item, index) => {
                             if (index < tempFrames.length -1) {
@@ -79,7 +78,7 @@ const ScaffoldList = () => {
                                     tempFrames[tempNumber].qend = item.qstart +1
                                 }
                             }
-                            tempResults =+ (item.qstart - item.qend)
+                            tempResults =+ (item.qend - item.qstart)
                         })
                     }
                     tempList.push('O frame ' + frame + ' do Scaffold ' + newScaffold + ' tem uma cobertura de ' + (tempResults / qlen)*100)
@@ -101,7 +100,10 @@ const ScaffoldList = () => {
 
   return (
     <>
-    <EuiFilePicker onChange={onChange} ref={filePickerRef} id='filePickerID' display='large' />
+    <div style={{display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
+        <EuiFilePicker onChange={onChange} ref={filePickerRef} id='filePickerID' display='large' />
+
+    </div>
     <EuiButton disabled={currentFile.length === 0} onClick={() => {onClick()}}> Calculate</EuiButton>
     {scaffoldList.map(e => { return <EuiText>{e}</EuiText>})}
 
