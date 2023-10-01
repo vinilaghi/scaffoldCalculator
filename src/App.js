@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import ScaffoldList from './ScaffoldList'
+import { EuiProvider } from '@elastic/eui';
+import '@elastic/eui/dist/eui_theme_dark.css';
 
 function App() {
   return (
+    <EuiProvider colorMode="dark">
+
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
          Scaffold calculator
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <div className='main'>
+      <ScaffoldList />
+      </div>
+
     </div>
+    </EuiProvider>
   );
 }
 
