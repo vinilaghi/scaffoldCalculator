@@ -70,10 +70,8 @@ const ScaffoldList = () => {
                                             tempFrames[tempNumber].qstart = item.qend +1
                                         }
                                     }
-                                    debugger;
                                     let tempValue = item.qend - item.qstart;
                                     tempResults +=  tempValue
-                                    debugger;
                                 })
                             } else {
                                 let tempFrames = cloneDeep(tempIdList[key][frame])
@@ -89,7 +87,9 @@ const ScaffoldList = () => {
                                             tempFrames[tempNumber].qend = item.qstart +1
                                         }
                                     }
-                                    tempResults =+ (item.qstart - item.qend)
+                                    let tempValue = item.qend - item.qstart;
+                                    tempResults +=  tempValue
+                                    
                                 })
                             }
                             tempList.push('Em ' + qseqid + ' o frame ' + frame + ' do ' + newScaffold + ' tem uma cobertura de ' + (tempResults / qlen)*100)
