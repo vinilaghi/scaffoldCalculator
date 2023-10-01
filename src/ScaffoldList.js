@@ -18,9 +18,13 @@ const ScaffoldList = () => {
             let jsonFile = JSON.parse(e.target.result)
             let tempIdList = {};
             let qlen;
+            let qseqid;
             jsonFile.Sheet1.forEach(scaffold => {
                 if (!qlen) {
                     qlen = scaffold.qlen
+                }
+                if (!qseqid) {
+                    qseqid = scaffold.qseqid
                 }
                 if (!tempIdList[scaffold.scaffold_id]) {
                     
@@ -81,7 +85,7 @@ const ScaffoldList = () => {
                             tempResults =+ (item.qend - item.qstart)
                         })
                     }
-                    tempList.push('O frame ' + frame + ' do Scaffold ' + newScaffold + ' tem uma cobertura de ' + (tempResults / qlen)*100)
+                    tempList.push('Em ' + qseqid + 'o frame ' + frame + ' do ' + newScaffold + ' tem uma cobertura de ' + (tempResults / qlen)*100)
 
                 })
 
