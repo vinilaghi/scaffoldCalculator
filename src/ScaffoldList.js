@@ -86,7 +86,7 @@ const ScaffoldList = () => {
                                             tempFrames[tempNumber].qend = item.qstart +1
                                         }
                                     }
-                                    let tempValue = item.qend - item.qstart;
+                                    let tempValue = item.qstart - item.qend;
                                     tempResults +=  tempValue
                                     
                                 })
