@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import {EuiFilePicker, EuiButton, EuiText} from '@elastic/eui'
+import {EuiFilePicker, EuiButton, EuiText, EuiSpacer} from '@elastic/eui'
 import { cloneDeep } from 'lodash'
 
 const ScaffoldList = () => {
@@ -42,6 +42,8 @@ const ScaffoldList = () => {
 
             Object.keys(tempIdList).forEach(key => {
                 let newScaffold = key;
+                tempList.push('')
+                let tempFrameResults = []
   
 
                     Object.keys(tempIdList[key]).forEach(frame => {
@@ -92,11 +94,15 @@ const ScaffoldList = () => {
                                     
                                 })
                             }
-                            tempList.push('Em ' + qseqid + ' o frame ' + frame + ' do ' + newScaffold + ' tem uma cobertura de ' + (tempResults / qlen)*100)
-        
-                        
-                       
+                            tempFrameResults.push({frame: frame, cover: ((tempResults / qlen)*100).toFixed(2)})
                     })
+                    tempFrameResults.sort((a, b) => {
+                        return parseInt(a.frame) - parseInt(b.frame);
+                    });
+                    tempFrameResults.forEach(item => {
+                        tempList.push('Em ' + qseqid + ' o frame ' + item.frame + ' do ' + newScaffold + ' tem uma cobertura de ' + item.cover)
+                    })
+                    
                 
 
               });
@@ -119,7 +125,7 @@ const ScaffoldList = () => {
 
     </div>
     <EuiButton disabled={currentFile.length === 0} onClick={() => {onClick()}}> Calculate</EuiButton>
-    {scaffoldList.map(e => { return <EuiText>{e}</EuiText>})}
+    {scaffoldList.map(e => { return  e? <EuiText>{e}</EuiText> : <EuiSpacer />})}
 
     </>
   )
